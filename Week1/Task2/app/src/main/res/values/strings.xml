@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Task2</string>
+    <string name="progress">Progress:</string>
+    <string name="decrease_progress">Decrease progress</string>
+</resources>
