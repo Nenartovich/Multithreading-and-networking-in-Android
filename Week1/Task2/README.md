@@ -9,6 +9,7 @@
 
 
 ## Скриншоты
-
+<p float="left">
 <img src="https://i.ibb.co/fd12s42/Screenshot-from-2021-06-09-17-28-03.png" width="304px" height="562px"/>
 <img src="https://i.ibb.co/jLBvjJ6/Screenshot-from-2021-06-09-17-29-42.png" width="304px" height="562px"/>
+</p>
