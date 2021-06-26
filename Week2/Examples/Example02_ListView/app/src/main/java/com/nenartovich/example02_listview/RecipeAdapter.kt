@@ -27,20 +27,34 @@ class RecipeAdapter(private val context: Context,
         )
     }
 
-
     override fun getCount(): Int = dataSource.size
 
     override fun getItem(position: Int): Any = dataSource[position]
 
     override fun getItemId(position: Int): Long = position.toLong()
 
-    override fun getView(position: Int, view: View?, parent: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.list_item_recipe, parent, false)
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View
+        val holder: ViewHolder
 
-        val titleTextView: TextView = rowView.findViewById(R.id.recipe_list_title)
-        val subtitleTextView: TextView = rowView.findViewById(R.id.recipe_list_subtitle)
-        val detailTextView: TextView = rowView.findViewById(R.id.recipe_list_detail)
-        val thumbnailImageView: ImageView = rowView.findViewById(R.id.recipe_list_thumbnail)
+        if (convertView == null) {
+            view = inflater.inflate(R.layout.list_item_recipe, parent, false)
+            holder = ViewHolder()
+            holder.thumbnailImageView = view.findViewById(R.id.recipe_list_thumbnail) as ImageView
+            holder.titleTextView = view.findViewById(R.id.recipe_list_title) as TextView
+            holder.subtitleTextView = view.findViewById(R.id.recipe_list_subtitle) as TextView
+            holder.detailTextView = view.findViewById(R.id.recipe_list_detail) as TextView
+
+            view.tag = holder
+        } else {
+            view = convertView
+            holder = convertView.tag as ViewHolder
+        }
+
+        val titleTextView = holder.titleTextView
+        val subtitleTextView = holder.subtitleTextView
+        val detailTextView = holder.detailTextView
+        val thumbnailImageView = holder.thumbnailImageView
 
         val recipe = getItem(position) as Recipe
 
@@ -62,6 +76,13 @@ class RecipeAdapter(private val context: Context,
         detailTextView.setTextColor(
             ContextCompat.getColor(context, LABEL_COLORS[recipe.label] ?: R.color.colorPrimary))
 
-        return rowView
+        return view
+    }
+
+    private class ViewHolder {
+        lateinit var titleTextView: TextView
+        lateinit var subtitleTextView: TextView
+        lateinit var detailTextView: TextView
+        lateinit var thumbnailImageView: ImageView
     }
 }

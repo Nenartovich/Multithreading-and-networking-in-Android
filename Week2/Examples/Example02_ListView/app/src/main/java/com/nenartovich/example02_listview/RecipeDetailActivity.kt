@@ -36,7 +36,5 @@ class RecipeDetailActivity : AppCompatActivity() {
         setTitle(title)
         webView.webViewClient = WebViewClient()
         webView.loadUrl(url!!)
-
-
     }
 }
