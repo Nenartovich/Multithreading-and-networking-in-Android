@@ -13,25 +13,26 @@ class MainActivity : AppCompatActivity() {
         private const val FAVOURITE_BOOKS_NAMES_KEY = "com.nenartovich.FAVOURITE_BOOKS_NAMES_KEY"
         private val bookArray  = arrayOf(
         Book(R.string.abc_an_amazing_alphabet_book, R.string.dr_seuss, R.drawable.abc,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/abc.jpg"),
+        false, "https://images-na.ssl-images-amazon.com/images/I/51ZptZg2ziL._SX359_BO1,204,203,200_.jpg"),
         Book(R.string.are_you_my_mother, R.string.dr_seuss, R.drawable.areyoumymother,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/areyoumymother.jpg"),
-        Book(R.string.where_is_babys_belly_button, R.string.karen_katz, R.drawable.whereisbabysbellybutton,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/whereisbabysbellybutton.jpg"),
+        false, "https://cv01.twirpx.net/1746/1746752.jpg?t=20190715045620"),
+        Book(R.string.where_is_babys_belly_button, R.string.karen_katz,
+            R.drawable.whereisbabysbellybutton,
+        false, "https://images-na.ssl-images-amazon.com/images/I/71QmQucSriL.jpg"),
         Book(R.string.on_the_night_you_were_born, R.string.nancy_tillman, R.drawable.onthenightyouwereborn,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/onthenightyouwereborn.jpg"),
+        false, "https://images-na.ssl-images-amazon.com/images/I/71EAPz3rdCL.jpg"),
         Book(R.string.hand_hand_fingers_thumb, R.string.dr_seuss, R.drawable.handhandfingersthumb,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/handhandfingersthumb.jpg"),
+        false, "https://images-na.ssl-images-amazon.com/images/I/817u4Bp0vjL.jpg"),
         Book(R.string.the_very_hungry_caterpillar, R.string.eric_carle, R.drawable.theveryhungrycaterpillar,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/theveryhungrycaterpillar.jpg"),
+        false, "https://www.podpisnie.ru/upload/resize_images/13416623/classic_312x460_13416623.jpeg"),
         Book(R.string.the_going_to_bed_book, R.string.sandra_boynton, R.drawable.thegoingtobedbook,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/thegoingtobedbook.jpg"),
+        false, "https://images-na.ssl-images-amazon.com/images/I/71slsnNNChL.jpg"),
         Book(R.string.oh_baby_go_baby, R.string.dr_seuss, R.drawable.ohbabygobaby,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/ohbabygobaby.jpg"),
+        false, "https://images-na.ssl-images-amazon.com/images/I/51IPTUQXhoL._SX258_BO1,204,203,200_.jpg"),
         Book(R.string.the_tooth_book, R.string.dr_seuss, R.drawable.thetoothbook,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/thetoothbook.jpg"),
+        false, "https://s1.livelib.ru/boocover/1001781476/o/bc8d/Dr._Seuss__The_Tooth_Book.jpeg"),
         Book(R.string.one_fish_two_fish_red_fish_blue_fish, R.string.dr_seuss, R.drawable.onefish,
-        false, "http://www.raywenderlich.com/wp-content/uploads/2016/03/onefish.jpg"))
+        false, "https://s1.livelib.ru/boocover/1000569819/o/b479/Dr._Seuss__One_Fish_Two_Fish_Red_Fish_Blue_Fish.jpeg"))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

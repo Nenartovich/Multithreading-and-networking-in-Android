@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 
 class BooksAdapter(private val mContext: Context, private val books: Array<Book>) : BaseAdapter() {
     override fun getCount(): Int = books.size
@@ -35,7 +36,8 @@ class BooksAdapter(private val mContext: Context, private val books: Array<Book>
         val holder = item.tag as ViewHolder
 
 
-        holder.ivCoverArt.setImageResource(book.imageResource)
+        //holder.ivCoverArt.setImageResource(book.imageResource)
+        Picasso.with(mContext).load(book.imageUrl).placeholder(R.drawable.ic_launcher_foreground).into(holder.ivCoverArt)
         holder.ivFavourite.setImageResource(if (book.isFavourite) R.drawable.star_enabled else R.drawable.star_disabled)
         holder.tvBookName.text = mContext.resources.getString(book.name)
         holder.tvAuthor.text = mContext.resources.getString(book.author)
