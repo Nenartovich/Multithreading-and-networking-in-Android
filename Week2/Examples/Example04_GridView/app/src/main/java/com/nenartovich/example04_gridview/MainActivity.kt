@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         val gridView: GridView = findViewById(R.id.gridview)
         val booksAdapter = BooksAdapter(this, bookArray)
         gridView.onItemClickListener = AdapterView.OnItemClickListener {
@@ -50,8 +48,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         gridView.adapter = booksAdapter
-
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -78,8 +74,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-
 }
