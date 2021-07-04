@@ -7,7 +7,7 @@ import com.nenartovich.example06_recyclerview.R
 
 class MockAdapter : RecyclerView.Adapter<MockHolder>() {
     companion object {
-        private val data: ArrayList<Mock> = MockGenerator.generate(20) as ArrayList<Mock>
+        private val data: ArrayList<Mock> = MockGenerator.generate(5) as ArrayList<Mock>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MockHolder {
@@ -22,7 +22,10 @@ class MockAdapter : RecyclerView.Adapter<MockHolder>() {
 
     override fun getItemCount(): Int = data.size
 
-    fun addData(mocks: List<Mock>) {
+    fun addData(mocks: List<Mock>, refresh: Boolean) {
+        if (refresh) {
+            data.clear()
+        }
         data.addAll(mocks)
         notifyDataSetChanged()
     }
