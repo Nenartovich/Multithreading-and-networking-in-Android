@@ -11,6 +11,7 @@ import com.nenartovich.example06_recyclerview.mock.MockHolder
 class ContactsAdapter : RecyclerView.Adapter<MockHolder>() {
 
     private var cursor: Cursor? = null
+    private var listener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MockHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,6 +24,7 @@ class ContactsAdapter : RecyclerView.Adapter<MockHolder>() {
             val name = this.cursor!!.getString(this.cursor!!.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
             val id = this.cursor!!.getInt(this.cursor!!.getColumnIndex(ContactsContract.Contacts._ID))
             holder.bind(Mock(name, id))
+            holder.setListener(listener)
         }
     }
 
@@ -38,5 +40,13 @@ class ContactsAdapter : RecyclerView.Adapter<MockHolder>() {
             this.cursor = cursor
             notifyDataSetChanged()
         }
+    }
+
+    fun setListener(listener: OnItemClickListener?) {
+        this.listener = listener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(id: Int)
     }
 }

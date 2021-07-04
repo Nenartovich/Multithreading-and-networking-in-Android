@@ -1,6 +1,7 @@
 package com.nenartovich.example06_recyclerview
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -21,7 +22,14 @@ class RecyclerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Loade
     private val contactsAdapter: ContactsAdapter = ContactsAdapter()
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var errorView: View
-    private val random: java.util.Random = java.util.Random()
+    private var listener: ContactsAdapter.OnItemClickListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ContactsAdapter.OnItemClickListener) {
+            listener = context as ContactsAdapter.OnItemClickListener
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +50,7 @@ class RecyclerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Loade
         super.onActivityCreated(savedInstanceState)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = contactsAdapter
+        contactsAdapter.setListener(listener)
     }
     
     companion object {
@@ -75,5 +84,10 @@ class RecyclerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Loade
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+
+    override fun onDetach() {
+        listener = null
+        super.onDetach()
     }
 }
