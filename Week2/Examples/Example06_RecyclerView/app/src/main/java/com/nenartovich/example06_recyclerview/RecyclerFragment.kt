@@ -50,6 +50,7 @@ class RecyclerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, Loade
         super.onActivityCreated(savedInstanceState)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = contactsAdapter
+        recycler.addItemDecoration(CardDecoration())
         contactsAdapter.setListener(listener)
     }
     
