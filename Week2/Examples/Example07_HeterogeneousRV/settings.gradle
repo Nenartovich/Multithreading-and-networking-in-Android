@@ -1,0 +1,2 @@
+rootProject.name = "Example07_HeterogeneousRV"
+include ':app'
