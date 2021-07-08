@@ -7,19 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.nenartovich.task1_1.data.Resources
 import com.nenartovich.task1_1.items.ImageItem
 import com.nenartovich.task1_1.items.TextItem
 
-class RecyclerFragment : Fragment() {
-    val data = arrayOf<Any>(
-        TextItem("Jack Smith", "Android dev."),
-        ImageItem(R.drawable.picture1),
-        TextItem("Lil Peep", "Rockstar"),
-        ImageItem(R.drawable.picture2),
-        ImageItem(R.drawable.picture3),
-        ImageItem(R.drawable.picture4),
-        ImageItem(R.drawable.picture5),
-        TextItem("Eugene Nenartovich", "Lorem ipsum dolor"))
+class RecyclerFragment : Fragment(), MainActivity.MenuItemClickListener {
+    private val data = mutableListOf<Any>()
+
+    private val imageResources = Resources.imageResources
+    private val titles = Resources.titles
+    private val descriptions = Resources.descriptions
+    private val adapter = CustomAdapter(data)
+    private var textCount = 0
+    private var imageCount = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +36,6 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recycler: RecyclerView = view.findViewById(R.id.rv_recycler)
-        val adapter = CustomAdapter(data)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter
     }
@@ -43,5 +43,18 @@ class RecyclerFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = RecyclerFragment()
+    }
+
+    override fun addTextItem() {
+        data.add(TextItem(titles[textCount % titles.size]!!,
+            descriptions[textCount % descriptions.size]!!))
+        textCount++
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun addImageItem() {
+        data.add(ImageItem(imageResources[imageCount % imageResources.size]!!))
+        imageCount++
+        adapter.notifyDataSetChanged()
     }
 }

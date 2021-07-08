@@ -9,12 +9,17 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var menuItemClickListener: MenuItemClickListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val myFragment = RecyclerFragment.newInstance()
+        menuItemClickListener = myFragment
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fl_main_container, RecyclerFragment.newInstance(), null)
+            .replace(R.id.fl_main_container, myFragment, null)
             .commit()
 
         val toolbar: Toolbar = findViewById(R.id.tb_toolbar)
@@ -31,13 +36,18 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.btn_add_text -> {
-                Log.d("TAG", "onOptionsItemSelected: Text ")
+                menuItemClickListener.addTextItem()
             }
 
             R.id.btn_add_image -> {
-                Log.d("TAG", "onOptionsItemSelected: Image")
+                menuItemClickListener.addImageItem()
             }
         }
         return true
+    }
+
+    interface MenuItemClickListener {
+        fun addTextItem()
+        fun addImageItem()
     }
 }

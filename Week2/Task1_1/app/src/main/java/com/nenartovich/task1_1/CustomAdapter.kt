@@ -8,7 +8,7 @@ import com.nenartovich.task1_1.holders.ViewHolder2
 import com.nenartovich.task1_1.items.ImageItem
 import com.nenartovich.task1_1.items.TextItem
 
-class CustomAdapter(private val data: Array<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CustomAdapter(private val data: MutableList<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return if (viewType == 0) {
