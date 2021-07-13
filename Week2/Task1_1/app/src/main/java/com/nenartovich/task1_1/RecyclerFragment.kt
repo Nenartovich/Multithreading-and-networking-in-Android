@@ -12,19 +12,11 @@ import com.nenartovich.task1_1.items.ImageItem
 import com.nenartovich.task1_1.items.TextItem
 
 class RecyclerFragment : Fragment(), MainActivity.MenuItemClickListener {
-    private val data = mutableListOf<Any>()
 
-    private val imageResources = Resources.imageResources
-    private val titles = Resources.titles
-    private val descriptions = Resources.descriptions
     private val adapter = CustomAdapter(data)
-    private var textCount = 0
-    private var imageCount = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var recycler: RecyclerView
+    private lateinit var layoutManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,12 +27,21 @@ class RecyclerFragment : Fragment(), MainActivity.MenuItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recycler: RecyclerView = view.findViewById(R.id.rv_recycler)
-        recycler.layoutManager = LinearLayoutManager(context)
+        recycler = view.findViewById(R.id.rv_recycler)
+        layoutManager = LinearLayoutManager(context)
+        recycler.layoutManager = layoutManager
         recycler.adapter = adapter
     }
 
     companion object {
+        private val imageResources = Resources.imageResources
+        private val titles = Resources.titles
+        private val descriptions = Resources.descriptions
+
+        private val data = mutableListOf(TextItem(titles[0]!!, descriptions[0]!!),ImageItem(imageResources[0]!!))
+        private var textCount = 1
+        private var imageCount = 1
+
         @JvmStatic
         fun newInstance() = RecyclerFragment()
     }
@@ -49,12 +50,14 @@ class RecyclerFragment : Fragment(), MainActivity.MenuItemClickListener {
         data.add(TextItem(titles[textCount % titles.size]!!,
             descriptions[textCount % descriptions.size]!!))
         textCount++
+        recycler.scrollToPosition(data.size - 1)
         adapter.notifyDataSetChanged()
     }
 
     override fun addImageItem() {
         data.add(ImageItem(imageResources[imageCount % imageResources.size]!!))
         imageCount++
+        recycler.scrollToPosition(data.size - 1)
         adapter.notifyDataSetChanged()
     }
 }
