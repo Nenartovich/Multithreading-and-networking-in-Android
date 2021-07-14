@@ -3,6 +3,7 @@ package com.nenartovich.task1_1.holders
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.nenartovich.task1_1.CustomAdapter
 import com.nenartovich.task1_1.R
 import java.lang.Exception
 
@@ -13,5 +14,12 @@ class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
         tvTitle.text = title
         tvDescription.text = description
     }
+
+    fun setListener(listener: CustomAdapter.OnItemClickListener) {
+        itemView.setOnClickListener {
+            listener.onItemClick(position)
+        }
+    }
+
 
 }

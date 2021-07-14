@@ -9,6 +9,9 @@ import com.nenartovich.task1_1.items.ImageItem
 import com.nenartovich.task1_1.items.TextItem
 
 class CustomAdapter(private val data: MutableList<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private lateinit var listener: OnItemClickListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return if (viewType == 0) {
@@ -25,13 +28,23 @@ class CustomAdapter(private val data: MutableList<Any>) : RecyclerView.Adapter<R
             val title = (data[position] as TextItem).title
             val description = (data[position] as TextItem).description
             holder.bind(title, description)
+            holder.setListener(listener)
         } else {
             (holder as ViewHolder2).bind((data[position] as ImageItem).pictureId)
+            holder.setListener(listener)
         }
+
     }
 
     override fun getItemCount(): Int = data.size
 
     override fun getItemViewType(position: Int): Int = if (data[position] is TextItem) 0 else 1
 
+    fun setListener(listener: OnItemClickListener?) {
+        this.listener = listener!!
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 }

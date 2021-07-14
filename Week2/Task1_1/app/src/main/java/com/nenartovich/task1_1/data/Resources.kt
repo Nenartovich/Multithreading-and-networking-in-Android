@@ -31,7 +31,7 @@ class Resources {
                     "perhaps on a par with his acclaimed 1963 diptych Whaam!. One of the most " +
                     "representative paintings of the pop art movement, Drowning Girl was " +
                     "acquired by the Museum of Modern Art in 1971.",
-            2 to "Campbell's Soup Cans[1] (sometimes referred to as 32 Campbell's Soup Cans) " +
+            2 to "Campbell's Soup Cans (sometimes referred to as 32 Campbell's Soup Cans) " +
                     "is a work of art produced between November 1961 and March or April 1962, " +
                     "by American artist Andy Warhol. It consists of thirty-two canvases, each " +
                     "measuring 20 inches (51 cm) in height × 16 inches (41 cm) in width and " +
