@@ -1,0 +1,2 @@
+rootProject.name = "Example09_WriteIntoExternalStorage"
+include ':app'
