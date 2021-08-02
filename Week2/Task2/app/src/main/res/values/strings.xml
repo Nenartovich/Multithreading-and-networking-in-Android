@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Task2</string>
+    <string name="type_image_link_here">Type image link here</string>
+    <string name="download_image">Download image</string>
+    <string name="show_image">Show image</string>
+</resources>
